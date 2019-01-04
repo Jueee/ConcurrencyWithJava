@@ -17,7 +17,10 @@ Java 并发 API 包括多种同步机制，可以支持你：
 -	**synchronized 关键字**： synchronized 关键字允许你在某个代码块或者某个完整的方法中定义一个临界段。
 
 -	**Lock 接口**： Lock 提供了比 synchronized 关键字更为灵活的同步操作。   
-Lock 接口有多种不同类型： ReentrantLock 用于实现一个可与某种条件相关联的锁； ReentrantRead-WriteLock 将读写操作分离开来； StampedLock 是 Java 8 中增加的一种新特性，它包括三种控制读/写访问的模式。
+Lock 接口有多种不同类型：     
+1.	ReentrantLock 用于实现一个可与某种条件相关联的锁；   
+2.	ReentrantRead-WriteLock 将读写操作分离开来；   
+3.	StampedLock 是 Java 8 中增加的一种新特性，它包括三种控制读/写访问的模式。
 -	**Semaphore 类**：该类通过实现经典的信号量机制来实现同步。Java 支持二进制信号量和一般信号量。
 -	**CountDownLatch 类**：该类允许一个任务等待多项操作的结束。
 -	**CyclicBarrier 类**：该类允许多线程在某一共同点上进行同步。
