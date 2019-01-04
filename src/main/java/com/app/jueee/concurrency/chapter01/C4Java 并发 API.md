@@ -41,7 +41,7 @@ Lock 接口有多种不同类型：
 行任务或者周期性执行任务。
 -	**Executors**：该类使执行器的创建更为容易。
 -	**Callable 接口**：这是 Runnable 接口的替代接口——可返回值的一个单独的任务。
- Future 接口**：该接口包含了一些能获取 Callable 接口返回值并且控制其状态的方法。
+-	**Future 接口**：该接口包含了一些能获取 Callable 接口返回值并且控制其状态的方法。
   
   
 ### Fork/Join 框架
@@ -84,7 +84,8 @@ Java 并发 API 中含有大量可以在并发应用中使用而没有风险的�
 值或者抛出异常。
 
 下面是其中的一些数据结构。
--	**ConcurrentLinkedDeque**：这是一个非阻塞型的列表。
+-	**ConcurrentLinkedDeque**：这是一个非阻塞型的列表。  
+
 -	**ConcurrentLinkedQueue**：这是一个非阻塞型的队列。
 -	**LinkedBlockingDeque**：这是一个阻塞型的列表。
 -	**LinkedBlockingQueue**：这是一个阻塞型的队列。
