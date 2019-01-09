@@ -13,7 +13,7 @@ public class J5Signaling {
         new Thread(new Thread2()).start();
     }
 
-    private static class Thread1 implements Runnable{
+    private static class Thread1 extends Thread{
         @Override
         public void run(){
             synchronized (J5Signaling.class) {
@@ -36,7 +36,7 @@ public class J5Signaling {
         }
     }
 
-    private static class Thread2 implements Runnable{
+    private static class Thread2 extends Thread{
         @Override
         public void run(){
             synchronized (J5Signaling.class) {
