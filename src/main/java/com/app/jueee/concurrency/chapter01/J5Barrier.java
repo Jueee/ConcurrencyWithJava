@@ -1,9 +1,7 @@
 package com.app.jueee.concurrency.chapter01;
 
 import java.util.Date;
-import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
-import java.util.concurrent.Semaphore;
 
 /**
  *  栅栏模式
