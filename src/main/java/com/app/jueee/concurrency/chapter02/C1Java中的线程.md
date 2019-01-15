@@ -10,14 +10,14 @@ Java 使用 Thread 类实现执行线程。你可以使用以下机制在应用�
 -	可以通过线程来执行 Runnable 对象，但也可以通过其他类似执行器的 Java 并发对象来执行。这样可以更灵活地更改并发应用程序。
 -	可以通过不同线程使用同一 Runnable 对象。
 
-一旦有了 Thread 对象，就必须使用 start() 方法创建新的执行线程并且执行 Thread 类的 run()方法。  
+一旦有了 `Thread` 对象，就必须使用 start() 方法创建新的执行线程并且执行 `Thread` 类的 run()方法。  
 如果直接调用 run() 方法，那么你将调用常规 Java 方法而不会创建新的执行线程。
  
 ## Java 中的线程：特征和状态
 ### 线程优先级
-Java 中的所有线程都有一个优先级，这个整数值介于 Thread.MIN_PRIORITY 和 Thread.MAX_PRIORITY 之间（实际上它们的值分别是 1 和 10）。  
-所有线程在创建时其默认优先级都是 Thread.NORM_PRIORITY （实际上它的值是 5）。  
-可以使用 setPriority() 方法更改 Thread 对象的优先级（如果该操作不允许执行，它会抛出 SecurityException 异常）和 getPriority() 方法获得 Thread 对象的优先级。  
+Java 中的所有线程都有一个优先级，这个整数值介于 `Thread.MIN_PRIORITY` 和 `Thread.MAX_PRIORITY` 之间（实际上它们的值分别是 1 和 10）。  
+所有线程在创建时其默认优先级都是 `Thread.NORM_PRIORITY` （实际上它的值是 5）。  
+可以使用 setPriority() 方法更改 Thread 对象的优先级（如果该操作不允许执行，它会抛出 `SecurityException` 异常）和 getPriority() 方法获得 Thread 对象的优先级。  
 
 对于 Java 虚拟机和线程首选底层操作系统来说，这种优先级是一种提示，而非一种契约。  
 线程的执行顺序并没有保证。通常，较高优先级的线程将在较低优先级的线程之前执行，但是，正如之前所述，这一点并不能保证。
