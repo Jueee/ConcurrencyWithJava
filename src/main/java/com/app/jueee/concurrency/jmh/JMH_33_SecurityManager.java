@@ -75,4 +75,14 @@ public class JMH_33_SecurityManager {
 
         new Runner(opt).run();
     }
+    
+    /**
+     * 
+# Run complete. Total time: 00:03:21
+
+Benchmark                             Mode  Cnt    Score    Error  Units
+JMH_33_SecurityManager.testWithSM     avgt    5  945.916 ± 22.533  ns/op
+JMH_33_SecurityManager.testWithoutSM  avgt    5    7.607 ±  0.090  ns/op
+     * 
+     */
 }

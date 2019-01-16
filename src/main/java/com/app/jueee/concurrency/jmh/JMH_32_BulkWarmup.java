@@ -84,4 +84,14 @@ public class JMH_32_BulkWarmup {
 
         new Runner(opt).run();
     }
+    
+    /**
+     * 
+# Run complete. Total time: 00:05:00
+
+Benchmark                     Mode  Cnt  Score   Error  Units
+JMH_32_BulkWarmup.measure_c1  avgt    5  5.479 ± 0.068  ns/op
+JMH_32_BulkWarmup.measure_c2  avgt    5  6.106 ± 0.046  ns/op
+     * 
+     */
 }

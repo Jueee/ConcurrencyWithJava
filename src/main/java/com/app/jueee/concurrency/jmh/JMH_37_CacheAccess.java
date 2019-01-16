@@ -78,4 +78,14 @@ public class JMH_37_CacheAccess {
 
         new Runner(opt).run();
     }
+    
+    /**
+     * 
+# Run complete. Total time: 00:01:48
+
+Benchmark                    Mode  Cnt  Score   Error  Units
+JMH_37_CacheAccess.colFirst  avgt   25  8.863 ± 0.237  ns/op
+JMH_37_CacheAccess.rowFirst  avgt   25  2.630 ± 0.038  ns/op
+     * 
+     */
 }

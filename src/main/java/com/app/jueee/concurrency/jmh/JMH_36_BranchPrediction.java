@@ -82,4 +82,14 @@ public class JMH_36_BranchPrediction {
 
         new Runner(opt).run();
     }
+    
+    /**
+     * 
+# Run complete. Total time: 00:01:43
+
+Benchmark                         Mode  Cnt  Score   Error  Units
+JMH_36_BranchPrediction.sorted    avgt   25  2.408 ± 0.027  ns/op
+JMH_36_BranchPrediction.unsorted  avgt   25  6.327 ± 0.016  ns/op
+     * 
+     */
 }

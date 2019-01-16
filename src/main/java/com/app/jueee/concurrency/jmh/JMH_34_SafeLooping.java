@@ -92,4 +92,28 @@ public class JMH_34_SafeLooping {
 
         new Runner(opt).run();
     }
+    
+    /**
+     * 
+# Run complete. Total time: 00:08:16
+
+Benchmark                          (size)  Mode  Cnt     Score    Error  Units
+JMH_34_SafeLooping.measureRight_1       1  avgt   15     4.871 ±  1.877  ns/op
+JMH_34_SafeLooping.measureRight_1      10  avgt   15    21.767 ±  0.319  ns/op
+JMH_34_SafeLooping.measureRight_1     100  avgt   15   196.916 ±  0.931  ns/op
+JMH_34_SafeLooping.measureRight_1    1000  avgt   15  1883.451 ±  7.883  ns/op
+JMH_34_SafeLooping.measureRight_2       1  avgt   15     3.103 ±  0.030  ns/op
+JMH_34_SafeLooping.measureRight_2      10  avgt   15    18.395 ±  0.793  ns/op
+JMH_34_SafeLooping.measureRight_2     100  avgt   15   167.098 ±  1.382  ns/op
+JMH_34_SafeLooping.measureRight_2    1000  avgt   15  1592.958 ± 22.228  ns/op
+JMH_34_SafeLooping.measureWrong_1       1  avgt   15     3.031 ±  0.153  ns/op
+JMH_34_SafeLooping.measureWrong_1      10  avgt   15     3.887 ±  0.009  ns/op
+JMH_34_SafeLooping.measureWrong_1     100  avgt   15     5.834 ±  0.021  ns/op
+JMH_34_SafeLooping.measureWrong_1    1000  avgt   15    30.406 ±  0.479  ns/op
+JMH_34_SafeLooping.measureWrong_2       1  avgt   15     3.103 ±  0.007  ns/op
+JMH_34_SafeLooping.measureWrong_2      10  avgt   15     5.153 ±  0.008  ns/op
+JMH_34_SafeLooping.measureWrong_2     100  avgt   15    25.975 ±  0.118  ns/op
+JMH_34_SafeLooping.measureWrong_2    1000  avgt   15   290.488 ±  0.463  ns/op
+     * 
+     */
 }

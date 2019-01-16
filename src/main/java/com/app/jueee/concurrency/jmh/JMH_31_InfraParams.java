@@ -84,4 +84,14 @@ public class JMH_31_InfraParams {
 
         new Runner(opt).run();
     }
+    
+    /**
+     * 
+# Run complete. Total time: 00:16:44
+
+Benchmark                                 Mode  Cnt      Score      Error  Units
+JMH_31_InfraParams.measureDefault        thrpt   25  79042.242 ± 1259.334  ops/s
+JMH_31_InfraParams.measureFollowThreads  thrpt   25  79813.236 ± 1705.171  ops/s
+     * 
+     */
 }

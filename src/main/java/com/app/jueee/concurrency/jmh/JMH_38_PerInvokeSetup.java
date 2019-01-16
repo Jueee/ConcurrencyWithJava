@@ -97,4 +97,21 @@ public class JMH_38_PerInvokeSetup {
 
         new Runner(opt).run();
     }
+    
+    /**
+     * 
+# Run complete. Total time: 00:07:45
+
+Benchmark                             (count)  Mode  Cnt      Score      Error  Units
+JMH_38_PerInvokeSetup.measureNeutral        1  avgt   25     23.595 ±    0.341  ns/op
+JMH_38_PerInvokeSetup.measureNeutral       16  avgt   25     90.994 ±    1.958  ns/op
+JMH_38_PerInvokeSetup.measureNeutral      256  avgt   25  53189.792 ± 2356.391  ns/op
+JMH_38_PerInvokeSetup.measureRight          1  avgt   25      7.371 ±    0.221  ns/op
+JMH_38_PerInvokeSetup.measureRight         16  avgt   25     81.985 ±    0.767  ns/op
+JMH_38_PerInvokeSetup.measureRight        256  avgt   25  58261.581 ± 4280.846  ns/op
+JMH_38_PerInvokeSetup.measureWrong          1  avgt   25      2.603 ±    0.135  ns/op
+JMH_38_PerInvokeSetup.measureWrong         16  avgt   25      7.415 ±    0.087  ns/op
+JMH_38_PerInvokeSetup.measureWrong        256  avgt   25     55.517 ±    0.318  ns/op
+     * 
+     */
 }
