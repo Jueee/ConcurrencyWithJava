@@ -9,7 +9,7 @@ import java.util.List;
  * 
  * @author hzweiyongqiang
  */
-public class C2ParallelVersionMatrixMultiplier2 {
+public class J2ParallelVersionMatrixMultiplier2 {
 
     /**
      * 创建所有必要的执行线程计算结果矩阵
@@ -53,7 +53,7 @@ public class C2ParallelVersionMatrixMultiplier2 {
         double resultSerial[][] = new double[matrix1.length][matrix2[0].length];
 
         Date start = new Date();
-        C2ParallelVersionMatrixMultiplier2.multiply(matrix1, matrix2, resultSerial);
+        J2ParallelVersionMatrixMultiplier2.multiply(matrix1, matrix2, resultSerial);
         Date end = new Date();
         System.out.printf("Serial: %d%n", end.getTime() - start.getTime());
     }

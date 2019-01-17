@@ -1,5 +1,6 @@
 package com.app.jueee.concurrency.chapter02;
 
+import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 import org.openjdk.jmh.annotations.Benchmark;
@@ -19,46 +20,42 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.MICROSECONDS)
 @State(Scope.Thread)
-public class C2MatrixMultiplierTest {
+public class J3FileSearchTest {
     
-    @Param({"100", "500", "1000"})
-    private int length;
+    @Param({"C:\\Windows\\", "C:\\Users\\"})
+    private String fileSearch;
     
-    private double[][] matrix1;
-    private double[][] matrix2;
-    private double[][] resultSerial;
+    @Param({"hosts"})
+    private String fileName;
+    
+    private File file;
     
     @Setup
     public void prepare() {
-        // 生成两个 2000 行 2000 列的随机矩阵
-        matrix1 = MatrixGenerator.generate(length, length);
-        matrix2 = MatrixGenerator.generate(length, length);
-        resultSerial = new double[matrix1.length][matrix2[0].length];
+        file = new File(fileSearch);
     }
     
+    /**
+     *  串行版本
+     */
     @Benchmark
     public void serialVersion() {
-        C2SerialVersionMatrixMultiplier.multiply(matrix1, matrix2, resultSerial);
+        Result result = new Result();
+        J3SerialVersionFileSearch.searchFiles(file, fileName, result);
     }
     
+    /**
+     *  并发版本
+     */
     @Benchmark
-    public void parallelVersion1() {
-        C2ParallelVersionMatrixMultiplier1.multiply(matrix1, matrix2, resultSerial);
-    }
-    
-    @Benchmark
-    public void parallelVersion2() {
-        C2ParallelVersionMatrixMultiplier2.multiply(matrix1, matrix2, resultSerial);
-    }
-    
-    @Benchmark
-    public void parallelVersion3() {
-        C2ParallelVersionMatrixMultiplier3.multiply(matrix1, matrix2, resultSerial);
+    public void parallelVersion() {
+        Result result = new Result();
+        J3ParallelVersionFileSearch.searchFiles(file, fileName, result);
     }
 
     public static void main(String[] args) throws RunnerException {
         Options opt = new OptionsBuilder()
-                .include(C2MatrixMultiplierTest.class.getSimpleName())
+                .include(J3FileSearchTest.class.getSimpleName())
                 .forks(1)
                 .warmupIterations(5)
                 .measurementIterations(5)

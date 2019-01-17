@@ -10,7 +10,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
  * 
  * @author hzweiyongqiang
  */
-public class C3ParallelVersionFileSearch {
+public class J3ParallelVersionFileSearch {
 
     /**
      *	@param file  指向搜索基本路径的 File 对象
@@ -82,7 +82,7 @@ public class C3ParallelVersionFileSearch {
 
         Result result = new Result();
         start = new Date();
-        C3ParallelVersionFileSearch.searchFiles(file, regex, result);
+        J3ParallelVersionFileSearch.searchFiles(file, regex, result);
         end = new Date();
 
 

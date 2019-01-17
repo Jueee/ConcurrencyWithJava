@@ -7,7 +7,7 @@ import java.util.Date;
  *	
  *	@author hzweiyongqiang
  */
-public class C2SerialVersionMatrixMultiplier {
+public class J2SerialVersionMatrixMultiplier {
 
     public static void multiply(double[][] matrix1, double[][] matrix2, double[][] result) {
         int row1 = matrix1.length;
@@ -37,7 +37,7 @@ public class C2SerialVersionMatrixMultiplier {
         double resultSerial[][]= new double[matrix1.length][matrix2[0].length];
         
         Date start=new Date();
-        C2SerialVersionMatrixMultiplier.multiply(matrix1, matrix2, resultSerial);
+        J2SerialVersionMatrixMultiplier.multiply(matrix1, matrix2, resultSerial);
         Date end=new Date();
         System.out.printf("Serial: %d%n",end.getTime()-start.getTime());
     }

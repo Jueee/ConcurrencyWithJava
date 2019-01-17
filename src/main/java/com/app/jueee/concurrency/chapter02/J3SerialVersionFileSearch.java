@@ -8,7 +8,7 @@ import java.util.Date;
  *	
  *	@author hzweiyongqiang
  */
-public class C3SerialVersionFileSearch {
+public class J3SerialVersionFileSearch {
 
     public static void searchFiles(File file, String fileName, Result result) {
         File[] contents = file.listFiles();
@@ -44,7 +44,7 @@ public class C3SerialVersionFileSearch {
 
         Result result = new Result();
         start = new Date();
-        C3SerialVersionFileSearch.searchFiles(file, regex, result);
+        J3SerialVersionFileSearch.searchFiles(file, regex, result);
         end = new Date();
 
 
