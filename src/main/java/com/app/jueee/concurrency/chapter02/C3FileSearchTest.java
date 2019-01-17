@@ -22,35 +22,35 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 @State(Scope.Thread)
 public class C3FileSearchTest {
     
-    @Param({"C:", "D:"})
+    @Param({"C:\\Windows\\", "C:\\Users\\"})
     private String fileSearch;
     
     @Param({"hosts"})
     private String fileName;
     
-    private File fileSerial;
-    private File fileParallel;
-    
-    private Result resultSerial;
-    private Result resultParallel;
+    private File file;
     
     @Setup
     public void prepare() {
-        fileSerial = new File(fileSearch);
-        fileParallel = new File(fileSearch);
-
-        resultSerial  = new Result();
-        resultParallel  = new Result();
+        file = new File(fileSearch);
     }
     
+    /**
+     *  串行版本
+     */
     @Benchmark
     public void serialVersion() {
-        C3SerialVersionFileSearch.searchFiles(fileSerial, fileName, resultSerial);
+        Result result = new Result();
+        C3SerialVersionFileSearch.searchFiles(file, fileName, result);
     }
     
+    /**
+     *  并发版本
+     */
     @Benchmark
     public void parallelVersion() {
-        C3ParallelVersionFileSearch.searchFiles(fileParallel, fileName, resultParallel);
+        Result result = new Result();
+        C3ParallelVersionFileSearch.searchFiles(file, fileName, result);
     }
 
     public static void main(String[] args) throws RunnerException {

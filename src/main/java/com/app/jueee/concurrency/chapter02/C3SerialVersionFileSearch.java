@@ -38,7 +38,7 @@ public class C3SerialVersionFileSearch {
      *	@param args
      */
     public static void main(String[] args) {
-        File file = new File("C:\\Windows\\");
+        File file = new File("C:\\Users\\");
         String regex = "hosts";
         Date start, end;
 

@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
- * 第三个并发版本：线程的数量由处理器决定
+ * 并发版本：线程的数量由处理器决定
  * 
  * @author hzweiyongqiang
  */
@@ -76,7 +76,7 @@ public class C3ParallelVersionFileSearch {
      * @param args
      */
     public static void main(String[] args) {
-        File file = new File("C:\\Windows\\");
+        File file = new File("C:\\Users\\");
         String regex = "hosts";
         Date start, end;
 
