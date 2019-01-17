@@ -16,9 +16,9 @@ k-最邻近算法是一种用于分类的基本机器学习算法。
 实例最多的标签将被指派为输入实例的标签。
 
 ### 数据集和指标选择
--	采用 UCI机器学习资源库（UCI Machine Learning Repository）的 Bank Marketing 数据集。    
+-	采用 **UCI机器学习资源库**（UCI Machine Learning Repository）的 **Bank Marketing** 数据集。    
 
--	为了度量实例之间的距离，我们将采用欧氏距离（Euclidean distance）。  
+-	为了度量实例之间的距离，我们将采用**欧氏距离**（Euclidean distance）。  
 
 该指标要求实例的所有属性必须有数值。  
 Bank Marketing 数据集的一些属性是“类别型的”，也就是说，这些属性可以从一些预定义值中取值，这样就不能直接对该数据集使用欧氏距离。  
@@ -29,3 +29,6 @@ Bank Marketing 数据集的一些属性是“类别型的”，也就是说，�
 
 如果使所有的类别型取值的距离相同，还要为此单独创建属性。  
 例如已婚、单身和离婚，而每个属性都只有两个值：0（否）和 1（是）。
+
+## k-最近邻算法：串行版本
+[代码实现](J2SerialVersionKNearestNeighbors.java)
