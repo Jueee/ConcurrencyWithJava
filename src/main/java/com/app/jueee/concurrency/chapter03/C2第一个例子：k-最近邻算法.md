@@ -53,4 +53,30 @@ Java 并发 API 提供的一种同步机制： `CountDownLatch` 类。
 
 -	`await()` ：该方法挂起调用它的线程，直到计数器达到 0 为止。
 
-[代码实现](J2SerialVersionKNearestNeighbors.java)
+[代码实现](J2ConcurrentVersionKNearestNeighborsByFineGrained.java)
+
+### k-最近邻算法：粗粒度并发版本
+
+[代码实现](J2ConcurrentVersionKNearestNeighborsByCoarseGrained.java)
+
+
+## 测试结果
+
+```
+Train: 39129
+Test: 2059
+k-最近邻算法：串行版本 - 
+K: 10    Success: 1873  Mistakes: 186,useTime: 34532
+
+k-最近邻算法：粗粒度并发版本-不排序 -
+K: 10    Success: 1873  Mistakes: 186,useTime: 33709
+
+k-最近邻算法：粗粒度并发版本-排序 - 
+K: 10    Success: 1873  Mistakes: 186,useTime: 22084
+
+k-最近邻算法：细粒度并发版本-不排序 - 
+K: 10    Success: 1873  Mistakes: 186,useTime: 52587
+
+k-最近邻算法：细粒度并发版本-排序 - 
+K: 10    Success: 1873  Mistakes: 186,useTime: 40844
+```
