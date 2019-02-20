@@ -9,10 +9,9 @@ import java.util.concurrent.ThreadPoolExecutor;
 import com.app.jueee.concurrency.chapter03.command.ConcurrentCommand;
 
 /**
- * This class will process the tasks that arrives to the server when the server is shutting down
+ * 用以管理其拒绝的任务。如果在执行器已调用 shutdown() 或shutdownNow() 方法之后提交任务，则该任务会被执行器拒绝。
  * 
- * @author author
- *
+ * 每个被拒绝的任务都要调用一次 rejectedExecution() 方法，而该方法将接收被拒绝的任务和拒绝该任务的执行器作为参数。
  */
 public class RejectedTaskController implements RejectedExecutionHandler {
 

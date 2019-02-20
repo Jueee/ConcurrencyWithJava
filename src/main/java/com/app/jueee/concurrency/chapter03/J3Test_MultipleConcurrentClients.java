@@ -10,7 +10,8 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 模拟了同时存在多个客户端的情况。 对于这种情形，我们为每个 SerialClient 创建一个线程，并且同时运行这些客户端以查看服务器的性能。 我们测试了 1 到 5 个并发客户端。
+ * 模拟了同时存在多个客户端的情况。 
+ * 对于这种情形，我们为每个 SerialClient 创建一个线程，并且同时运行这些客户端以查看服务器的性能。 我们测试了 1 到 5 个并发客户端。
  * 
  * @author hzweiyongqiang
  */

@@ -12,48 +12,48 @@ import com.app.jueee.concurrency.chapter03.command.ConcurrentCommand;
 import com.app.jueee.concurrency.chapter03.log.Logger;
 
 /**
- * This class implements the Executor that will execute the server tasks. It extends the ThreadPoolExecutor
- * @author author
- *
+ * 执行器
+ * 扩展了 ThreadPoolExecutor 类并且还有一些内部属性
  */
 public class ServerExecutor extends ThreadPoolExecutor {
 
 	/**
-	 * Hashmap to store the start times of the tasks and calculate the CPU time used per user
+	 * 用于存储每个任务开始日期
 	 */
 	private ConcurrentHashMap<Runnable, Date> startTimes;
 
 	/**
-	 * Hashmap to store the execution statistics per user
+	 * 存储每个用户使用情况统计
 	 */
 	private ConcurrentHashMap<String, ExecutorStatistics> executionStatistics;
 	
 
 	/**
-	 * Core pool size of the executor. Initialize with the available processors
+	 * 定义执行器特征
 	 */
 	private static int CORE_POOL_SIZE = Runtime.getRuntime().availableProcessors();
 	
 	/**
-	 * Maximum pool size of the executor. Initialize with the available processors
+	 * 定义执行器特征
 	 */
 	private static int MAXIMUM_POOL_SIZE = Runtime.getRuntime().availableProcessors();
 	
 	/**
-	 * Time the threads of the executor can be idle
+	 * 定义执行器特征
 	 */
 	private static long KEEP_ALIVE_TIME = 10;
 	
 	/**
-	 * Controller for the rejected tasks
+	 * 控制执行器拒绝的任务
 	 */
 	private static RejectedTaskController REJECTED_TASK_CONTROLLER = new RejectedTaskController();
 	
 	
 	/**
-	 * Constructor of the class
+	 * 构造函数
 	 */
 	public ServerExecutor() {
+	    // 调用父类的构造函数，创建了一个 PriorityBlockingQueue 类，用于存储那些将在执行器中执行的任务。
 		super(CORE_POOL_SIZE, MAXIMUM_POOL_SIZE, KEEP_ALIVE_TIME, TimeUnit.SECONDS, new PriorityBlockingQueue<>(),REJECTED_TASK_CONTROLLER);
 		
 		startTimes = new ConcurrentHashMap<>();
@@ -61,8 +61,8 @@ public class ServerExecutor extends ThreadPoolExecutor {
 	}
 
 	/**
-	 * This method will be executed after the execution of every task in the executor. We calculate the
-	 * execution time of the tasks and adds it to the statistics of the user
+	 *  在执行器的每个任务执行完毕后执行
+         *  接收已执行的 ServerTask 对象和 Throwable 对象
 	 */
 	@Override
 	protected void afterExecute(Runnable r, Throwable t) {
@@ -86,7 +86,6 @@ public class ServerExecutor extends ThreadPoolExecutor {
 					+" has been cancelled.";
 				Logger.sendMessage(message);				
 			}
-				
 		} else {
 			String message="The exception "
 					+t.getMessage()
@@ -96,8 +95,8 @@ public class ServerExecutor extends ThreadPoolExecutor {
 	}
 
 	/**
-	 * This method will be executed before the execution of every task in the executor. We store
-	 * the start date of the task to calculate its execution time
+	  *  在每个任务执行之前执行。
+	  *  接收 ServerTask 对象和执行该任务的线程作为参数。
 	 */
 	@Override
 	protected void beforeExecute(Thread t, Runnable r) {
@@ -106,9 +105,8 @@ public class ServerExecutor extends ThreadPoolExecutor {
 	}
 
 	/**
-	 * This method is executed to create the Task object that will execute a Runnable
-	 * (our commands in this case) in the executor. We override the default task to
-	 * store the command on it and have access to its data in the afterExecute() method
+	 *  该方法执行后会转换发送给执行器的 Runnable 对象
+	 *  使用执行器待执行的 FutureTask 实例中的 submit() 方法。
 	 */
 	@Override
 	protected <T> RunnableFuture<T> newTaskFor(Runnable runnable, T value) {
@@ -117,7 +115,7 @@ public class ServerExecutor extends ThreadPoolExecutor {
 
 
 	/**
-	 * Method that writes the execution statistics per user to the Logger system
+	 *  将执行器中存储的所有统计信息写入日志系统。
 	 */
 	public void writeStatistics() {
 		for(Entry<String, ExecutorStatistics> entry: executionStatistics.entrySet()) {

@@ -9,33 +9,22 @@ import com.app.jueee.concurrency.chapter03.cache.ParallelCache;
 import com.app.jueee.concurrency.chapter03.log.Logger;
 
 /**
- * Abstract base class of the concurrent commands
- * @author author
- *
+ * 所有命令的基类
  */
 public abstract class ConcurrentCommand extends Command implements Comparable<ConcurrentCommand>, Runnable{
 
-	/**
-	 * Username that executes the command
-	 */
+	// 存储发送该查询的用户名称
 	private String username;
 	
-	/**
-	 * Priority of the command
-	 */
+	// 存储查询的优先级，它将决定查询的执行顺序
 	private byte priority;
 	
-	/**
-	 * Socket to write to the client 
-	 */
+	// 用于与客户端通信的套接字
 	private Socket socket;
 	
 	
 	/**
-	 * Constructor of the class
-	 * @param socket Socket to communicate with the client
-	 * @param command Parameters of the command
-	 * @param in The Stream used to read the data of the socket. We have to close it
+	 * 构造函数
 	 */
 	public ConcurrentCommand(Socket socket, String[] command) {
 		super(command);
@@ -45,14 +34,13 @@ public abstract class ConcurrentCommand extends Command implements Comparable<Co
 	}
 
 	/**
-	 * Abstract method with the logic of the command
+	 * 计算和返回查询的结果
 	 */
 	@Override
 	public abstract String execute();
 	
 	/**
-	 * Method that executes the command as a concurrent task. Write a message in the log, execute the
-	 * logic of the command and writes the output of the command to the client using the socket
+	 * 调用 execute() 方法，将结果存储在缓存，写入套接字中，并且关闭在通信中使用的所有资源
 	 */
 	@Override
 	public void run() {
@@ -82,7 +70,7 @@ public abstract class ConcurrentCommand extends Command implements Comparable<Co
 	
 
 	/**
-	 * Compare one command with another using the Priority
+	 * 使用其优先级属性确定任务执行的顺序
 	 */
 	@Override
 	public int compareTo(ConcurrentCommand o) {

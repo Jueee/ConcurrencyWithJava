@@ -5,10 +5,7 @@ import java.net.Socket;
 import com.app.jueee.concurrency.chapter03.J3ConcurrentVersionServer;
 
 /**
- * Class that implements the concurrent version of the Stop command.
- * Stops the server
- * @author author
- *
+ * 用于停止服务器的执行
  */
 public class ConcurrentStopCommand extends ConcurrentCommand {
 

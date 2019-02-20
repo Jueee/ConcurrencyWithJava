@@ -4,9 +4,7 @@ import java.net.Socket;
 
 
 /**
- * Concurrent version of the ErrorCommand. It's executed when an unknown command arrives
- * @author author
- *
+ * 用于管理某一未知命令到达服务器的情况
  */
 public class ConcurrentErrorCommand extends ConcurrentCommand {
 

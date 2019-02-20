@@ -3,10 +3,7 @@ package com.app.jueee.concurrency.chapter03.command;
 import java.net.Socket;
 
 /**
- * Class that implements the concurrent version of the Report command. 
- * Report: The format of this query is: r:codIndicator where codIndicator 
- * is the code of the indicator you want to report
- * @author author
+ * 用于获取有关某个指数的信息
  *
  */
 public class ConcurrentReportCommand extends ConcurrentCommand {
@@ -25,7 +22,6 @@ public class ConcurrentReportCommand extends ConcurrentCommand {
 	 */
 	@Override
 	public String execute() {
-	
 		WDIDAO dao=WDIDAO.getDAO();
 		return dao.report(command[3]);
 	}

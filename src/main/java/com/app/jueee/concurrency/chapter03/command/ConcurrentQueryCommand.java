@@ -3,11 +3,7 @@ package com.app.jueee.concurrency.chapter03.command;
 import java.net.Socket;
 
 /**
- * Class that implements the concurrent version of the Query Command. The format of 
- * this query is: q;codCountry;codIndicator;year where codCountry is the code of the country, 
- * codIndicator is the code of the indicator and the year is an optional parameter with the year 
- * you want to query
- * @author author
+ * 用于获取有关某个国家、某个指数以及某个年份（可选）的信息
  *
  */
 public class ConcurrentQueryCommand extends ConcurrentCommand {

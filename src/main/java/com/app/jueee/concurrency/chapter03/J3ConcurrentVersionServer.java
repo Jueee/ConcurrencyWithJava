@@ -31,14 +31,20 @@ public class J3ConcurrentVersionServer {
 
     public static final int CONCURRENT_PORT = 8089;
 
+    // 调用缓存系统
     private static ParallelCache cache;
+    // 从客户端获取连接
     private static ServerSocket serverSocket;
     
-    // 被声明为 volatile 型，因为另一个线程可以更改它。
+    // 指明该类何时要停止执行。 被声明为 volatile 型，因为另一个线程可以更改它。
     private static volatile boolean stopped = false;
+    // 存储那些向服务器发送消息的客户端的套接字。
     private static LinkedBlockingQueue<Socket> pendingConnections;
+    // 存放执行器执行的每个任务所关联的 Future 对象
     private static ConcurrentMap<String, ConcurrentMap<ConcurrentCommand, ServerTask<?>>> taskController;
+    // 创建命令并且将它们发送给执行器
     private static Thread requestThread;
+    // 执行 RequestTask 对象
     private static RequestTask task;
 
     public static void main(String[] args) {
@@ -97,6 +103,11 @@ public class J3ConcurrentVersionServer {
 
     }
 
+    /**
+          *     当任务正常执行结束时，该方法从 ServerTask 对象的嵌套 Map 中清除与该任务相关的 Future 对象。
+     *	@param username
+     *	@param command
+     */
     public static void finishTask(String username, ConcurrentCommand command) {
 
         ConcurrentMap<ConcurrentCommand, ServerTask<?>> userTasks = taskController.get(username);
@@ -107,6 +118,10 @@ public class J3ConcurrentVersionServer {
         Logger.sendMessage(message);
 
     }
+    
+    /**
+     *  改变 stopped 变量的取值并且关闭 serverSocket 实例
+     */
     public static void shutdown() {
         stopped = true;
         try {
@@ -115,6 +130,10 @@ public class J3ConcurrentVersionServer {
             e.printStackTrace();
         }
     }
+    
+    /**
+     *  用于停止执行器，中断执行 RequestTask 对象的线程，并且关闭 Logger 系统。
+     */
     private static void finishServer() {
         System.out.println("Shutting down the server...");
         task.shutdown();
@@ -131,32 +150,28 @@ public class J3ConcurrentVersionServer {
     }
 }
 
+/**
+ *  RequestTask 类是 ConcurrentServer 类与 Executor 类之间的中介
+ *  ConcurrentServer类用于连接客户端
+ *  Executor 类用于执行并发任务。 
+ *  
+ *  RequestTask 类打开与客户端连接的套接字，读取查询数据，创建适当的命令，并且将命令发送给执行器。
+ *	
+ *	@author hzweiyongqiang
+ */
 class RequestTask implements Runnable {
 
-    /**
-     * List with all the connections we have to process
-     */
+    // 存储客户端套接字
     private LinkedBlockingQueue<Socket> pendingConnections;
 
-    /**
-     * Executor that will execute the commands
-     */
+    // 将命令作为并发任务执行
     private ServerExecutor executor = new ServerExecutor();
 
-    /**
-     * Hashmap that stores the Future instances to control the execution of the
-     * tasks
-     */
+    // 存储与任务相关的 Future 对象
     private ConcurrentMap<String, ConcurrentMap<ConcurrentCommand, ServerTask<?>>> taskController;
 
     /**
-     * Constructor of the class
-     * 
-     * @param pendingConnections
-     *            List to store the connections we have to process
-     * @param taskController
-     *            Hashmap to store the Future instances to control the execution
-     *            of the tasks
+            *          构造函数初始化
      */
     public RequestTask(LinkedBlockingQueue<Socket> pendingConnections,
             ConcurrentMap<String, ConcurrentMap<ConcurrentCommand, ServerTask<?>>> taskController) {
@@ -164,6 +179,9 @@ class RequestTask implements Runnable {
         this.taskController = taskController;
     }
 
+    /**
+     *  执行循环直到该线程中断处理存放在 pendingConnections 对象中的套接字。
+     */
     @Override
     public void run() {
 

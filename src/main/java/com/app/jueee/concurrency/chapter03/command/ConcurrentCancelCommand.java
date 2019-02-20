@@ -6,9 +6,7 @@ import com.app.jueee.concurrency.chapter03.J3ConcurrentVersionServer;
 import com.app.jueee.concurrency.chapter03.log.Logger;
 
 /**
- * Concurrent command that cancel the tasks of a user
- * @author author
- *
+ * 用于撤销某一用户任务的执行
  */
 public class ConcurrentCancelCommand extends ConcurrentCommand {
 
@@ -28,6 +26,7 @@ public class ConcurrentCancelCommand extends ConcurrentCommand {
 	 */
 	@Override
 	public String execute() {
+	    // 停止执行与参数中指定用户相关的所有待处理任务
 	    J3ConcurrentVersionServer.cancelTasks(getUsername());
 		String message = "Tasks of user "
 				+getUsername()

@@ -13,7 +13,8 @@ import com.app.jueee.concurrency.chapter03.command.WDI;
 import com.app.jueee.concurrency.chapter03.command.WDIDAO;
 
 /**
- * 该类实现了一个可用的串行服务器客户端。 该客户端产生了 9 个使用 Query 消息的请求和一个使用 Report 消息的查询。 该客户端将重复该过程 10 次，这样就会请求 90 次 Query 查询和 10 次 Report 查询。
+ * 该类实现了一个可用的串行服务器客户端。 
+ * 该客户端产生了 9 个使用 Query 消息的请求和一个使用 Report 消息的查询。 该客户端将重复该过程 10 次，这样就会请求 90 次 Query 查询和 10 次 Report 查询。
  * 
  * @author hzweiyongqiang
  */

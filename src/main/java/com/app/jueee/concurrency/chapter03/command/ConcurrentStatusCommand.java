@@ -7,10 +7,7 @@ import com.app.jueee.concurrency.chapter03.J3ConcurrentVersionServer;
 import com.app.jueee.concurrency.chapter03.log.Logger;
 
 /**
- * Class that implement the concurrent version of the status command. 
- * Returns information about the executor that executes the concurrent tasks of the
- * server
- * @author author
+ * 用于获取服务器状态的信息
  *
  */
 public class ConcurrentStatusCommand extends ConcurrentCommand {
