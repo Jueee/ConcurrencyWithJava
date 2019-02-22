@@ -1,0 +1,3 @@
+Financial Times;http://www.ftchinese.com/rss/feed
+WaiTang HuaBao;http://blog.sina.com.cn/rss/THEBUND.xml
+Life Week;http://blog.sina.com.cn/rss/1191965271.xml
