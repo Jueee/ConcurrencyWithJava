@@ -38,3 +38,6 @@ Callable 接口的主要特征如下：
 	-	第二个变体带有两个参数：时间周期和该周期的 TimeUnit （时间单位）。  
 	该变体与第一个变体的区别在于将线程等待的时间周期作为参数来传递。  
 	如果这一周期结束后任务仍未结束执行，该方法就会抛出一个 TimeoutException 异常。
+	
+## 样例
+[Callable 接口](J1CallableTest.java)	
