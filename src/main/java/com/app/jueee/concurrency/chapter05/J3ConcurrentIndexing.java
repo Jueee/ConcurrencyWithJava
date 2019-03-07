@@ -1,7 +1,6 @@
 package com.app.jueee.concurrency.chapter05;
 
 import java.io.File;
-import java.util.Date;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.concurrent.ExecutorCompletionService;
@@ -12,21 +11,18 @@ import java.util.concurrent.TimeUnit;
 import com.app.jueee.concurrency.chapter05.common.Document;
 
 public class J3ConcurrentIndexing {
-
     
-    public static void main(String[] args) {
+    public static int test(File source) {
+        return test(source.listFiles());
+    }
+    
+    public static int test(File[] files) {
         int numCores = Runtime.getRuntime().availableProcessors();
         ThreadPoolExecutor executor = (ThreadPoolExecutor)Executors.newFixedThreadPool(Math.max(numCores-1, 1));
         
         ExecutorCompletionService<Document> completionService = new ExecutorCompletionService<>(executor);
         ConcurrentHashMap<String, ConcurrentLinkedDeque<String>> invertedIndex = new ConcurrentHashMap<>();
         
-        Date start,end;
-        File source = new File("data//chapter05//data");
-        // 存储所有的文档
-        File[] files = source.listFiles();
-        
-        start = new Date();
         for(File file: files) {
             // 处理数组中的所有文件，为每个文件创建一个 InvertedTask 对象
             IndexingTask task = new IndexingTask(file);
@@ -65,8 +61,13 @@ public class J3ConcurrentIndexing {
             e.printStackTrace();
         }
         
-        end=new Date();
-        System.out.println("Execution Time: " + (end.getTime() - start.getTime()));
-        System.out.println("invertedIndex: " + invertedIndex.size());
+        return invertedIndex.size();
+    }
+    
+    public static void main(String[] args) {
+        File source = new File("data//chapter05//data");
+        // 存储所有的文档
+        File[] files = source.listFiles();
+        System.out.println("invertedIndex: " + test(files));
     }
 }
