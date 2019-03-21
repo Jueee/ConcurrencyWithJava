@@ -39,4 +39,13 @@ public class Individual implements Comparable<Individual>{
         this.value = value;
     }
 
+    @Override
+    public String toString() {
+        String ret="";
+        for (Integer number: chromosomes) {
+            ret+=number+";";
+        }
+        return ret;
+    }
+
 }
