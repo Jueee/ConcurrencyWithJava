@@ -21,6 +21,14 @@ public class GeneticPhaser extends Phaser{
         this.data = data;
     }
     
+    public SharedData getData() {
+        return data;
+    }
+
+    public void setData(SharedData data) {
+        this.data = data;
+    }
+
     /**
      *  如果余数为 0 ，任务完成了选择阶段并且准备执行交叉阶段。使用 0 值对该索引对象进行初始化。
      *  如果余数为 1 ，任务完成交叉阶段并且准备执行评估阶段。使用 0 值来初始化该索引对象。

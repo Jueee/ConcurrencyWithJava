@@ -22,6 +22,10 @@ public class SharedData {
     // 距离矩阵，其中含有城市之间的距离。
     private int[][] distanceMatrix;
     
+    public SharedData() {
+        index = new AtomicInteger();
+    }
+    
     public Individual[] getPopulation() {
         return population;
     }
