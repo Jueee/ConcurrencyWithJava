@@ -40,10 +40,12 @@ k-means 聚类算法将预先未分类的项集分组到预定的 K 个簇。
 用于存放单词字符串以及将该单词作为关键字的文档数量。
 -	[DocumentLoader](common/DocumentLoader.java) 类：  
 用于加载有关文档的信息。  
--	[DistanceMeasure](common/DistanceMeasure.java) 类：  
+-	[DistanceMeasurer](common/DistanceMeasurer.java) 类：  
 用于计算两个向量之间的欧氏距离。 
 -	[DocumentCluster](common/DocumentCluster.java) 类：  
 用于存储有关簇的信息。
 
 ### 串行版本
+-	[J2KMeansSerialMain](J2KMeansSerialMain.java) 类：  
+实现了 k-means 聚类算法的串行版本。
 

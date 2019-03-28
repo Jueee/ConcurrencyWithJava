@@ -43,7 +43,7 @@ public class DocumentLoader {
         Document document = new Document(tokens[0], size);
         Word[] data = document.getData();
         
-        for (int i = 0; i < tokens.length; i++) {
+        for (int i = 1; i < tokens.length; i++) {
             String[] wordInfo = tokens[i].split(":");
             Word word = new Word();
             word.setIndex(vocIndex.get(wordInfo[0]));
