@@ -49,3 +49,18 @@ k-means 聚类算法将预先未分类的项集分组到预定的 K 个簇。
 -	[J2KMeansSerialMain](J2KMeansSerialMain.java) 类：  
 实现了 k-means 聚类算法的串行版本。
 
+### 并发版本
+并发版本运用了 Fork/Join 框架。  
+我们已经基于 RecursiveAction 类实现了两种任务。  
+如前所述，当希望使用 Fork/Join框架处理不返回结果的任务时，可以使用 RecursiveAction 任务。  
+将指派阶段和更新阶段的工作作为在 Fork/Join 框架中执行的任务来实现。
+
+-	[AssignmentTask](AssignmentTask.java) 类：  
+
+-	[UpdateTask](UpdateTask.java) 类：  
+-	[J2KMeansConcurrentMain](J2KMeansConcurrentMain.java) 类：  
+实现了算法的并发版本，测试算法的并发版本。
+
+
+
+
