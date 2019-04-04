@@ -56,11 +56,50 @@ k-means 聚类算法将预先未分类的项集分组到预定的 K 个簇。
 将指派阶段和更新阶段的工作作为在 Fork/Join 框架中执行的任务来实现。
 
 -	[AssignmentTask](AssignmentTask.java) 类：  
+将指派阶段作为在 Fork/Join 框架中执行的任务实现。 
 
 -	[UpdateTask](UpdateTask.java) 类：  
+将更新阶段作为在 Fork/Join 框架中执行的任务实现。
 -	[J2KMeansConcurrentMain](J2KMeansConcurrentMain.java) 类：  
 实现了算法的并发版本，测试算法的并发版本。
 
-
+### 对比解决方案
+```
+Benchmark               (K)  (MAX_SIZE)  (SEED)  Mode  Cnt        Score   Error  Units
+J2KMeansConcurrentMain    5           1       1  avgt        399239.069          us/op
+J2KMeansConcurrentMain    5         400       1  avgt        554627.902          us/op
+J2KMeansConcurrentMain   10           1      13  avgt        571823.627          us/op
+J2KMeansConcurrentMain   10         400       1  avgt        626450.431          us/op
+J2KMeansConcurrentMain   10         400      13  avgt        792631.021          us/op
+J2KMeansConcurrentMain   15          20       1  avgt        752695.008          us/op
+J2KMeansConcurrentMain   15          20      13  avgt        788454.653          us/op
+J2KMeansConcurrentMain   15         400       1  avgt       1041682.411          us/op
+J2KMeansConcurrentMain   15         400      13  avgt       1091953.958          us/op
+J2KMeansConcurrentMain   20           1      13  avgt       1015022.038          us/op
+J2KMeansSerialMain        5           1       1  avgt       2300589.721          us/op
+J2KMeansSerialMain        5           1      13  avgt       1312362.592          us/op
+J2KMeansSerialMain        5          20       1  avgt       2203432.992          us/op
+J2KMeansSerialMain        5          20      13  avgt       1287428.162          us/op
+J2KMeansSerialMain        5         400       1  avgt       2192770.291          us/op
+J2KMeansSerialMain        5         400      13  avgt       1301801.232          us/op
+J2KMeansSerialMain       10           1       1  avgt       2339902.836          us/op
+J2KMeansSerialMain       10           1      13  avgt       3061726.859          us/op
+J2KMeansSerialMain       10          20       1  avgt       2294720.361          us/op
+J2KMeansSerialMain       10          20      13  avgt       3055987.854          us/op
+J2KMeansSerialMain       10         400       1  avgt       2300097.655          us/op
+J2KMeansSerialMain       10         400      13  avgt       3056960.654          us/op
+J2KMeansSerialMain       15           1       1  avgt       3863927.195          us/op
+J2KMeansSerialMain       15           1      13  avgt       3814253.549          us/op
+J2KMeansSerialMain       15          20       1  avgt       3816437.399          us/op
+J2KMeansSerialMain       15          20      13  avgt       3834518.158          us/op
+J2KMeansSerialMain       15         400       1  avgt       3824215.358          us/op
+J2KMeansSerialMain       15         400      13  avgt       3870562.029          us/op
+J2KMeansSerialMain       20           1       1  avgt       6160008.281          us/op
+J2KMeansSerialMain       20           1      13  avgt       5838164.222          us/op
+J2KMeansSerialMain       20          20       1  avgt       6276171.293          us/op
+J2KMeansSerialMain       20          20      13  avgt       5758414.801          us/op
+J2KMeansSerialMain       20         400       1  avgt       6294472.041          us/op
+J2KMeansSerialMain       20         400      13  avgt       5659112.111          us/op
+```
 
 
