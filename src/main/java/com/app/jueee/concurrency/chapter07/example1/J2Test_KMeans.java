@@ -1,4 +1,4 @@
-package com.app.jueee.concurrency.chapter07;
+package com.app.jueee.concurrency.chapter07.example1;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -19,9 +19,9 @@ import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
-import com.app.jueee.concurrency.chapter07.common.Document;
-import com.app.jueee.concurrency.chapter07.common.DocumentLoader;
-import com.app.jueee.concurrency.chapter07.common.VocabularyLoader;
+import com.app.jueee.concurrency.chapter07.common1.Document;
+import com.app.jueee.concurrency.chapter07.common1.DocumentLoader;
+import com.app.jueee.concurrency.chapter07.common1.VocabularyLoader;
 
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.MICROSECONDS)

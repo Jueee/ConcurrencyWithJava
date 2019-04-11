@@ -31,22 +31,22 @@ k-means 聚类算法将预先未分类的项集分组到预定的 K 个簇。
 实现一个应用程序来对某个文档集进行聚类。
 
 ### 公共类
--	[VocabularyLoader](common/VocabularyLoader.java) 类：  
+-	[VocabularyLoader](common1/VocabularyLoader.java) 类：  
 用于加载文档集中构成词汇表的单词列表。
 
--	[Word](common/Word.java) 类：  
+-	[Word](common1/Word.java) 类：  
 用于存放单词字符串和度量该单词的指标（ TF 、 DF 和 TF-IDF ）。
--	[Document](common/Document.java) 类：  
+-	[Document](common1/Document.java) 类：  
 用于存放单词字符串以及将该单词作为关键字的文档数量。
--	[DocumentLoader](common/DocumentLoader.java) 类：  
+-	[DocumentLoader](common1/DocumentLoader.java) 类：  
 用于加载有关文档的信息。  
--	[DistanceMeasurer](common/DistanceMeasurer.java) 类：  
+-	[DistanceMeasurer](common1/DistanceMeasurer.java) 类：  
 用于计算两个向量之间的欧氏距离。 
--	[DocumentCluster](common/DocumentCluster.java) 类：  
+-	[DocumentCluster](common1/DocumentCluster.java) 类：  
 用于存储有关簇的信息。
 
 ### 串行版本
--	[J2KMeansSerialMain](J2KMeansSerialMain.java) 类：  
+-	[J2KMeansSerialMain](example1/J2KMeansSerialMain.java) 类：  
 实现了 k-means 聚类算法的串行版本。
 
 ### 并发版本
@@ -55,15 +55,17 @@ k-means 聚类算法将预先未分类的项集分组到预定的 K 个簇。
 如前所述，当希望使用 Fork/Join框架处理不返回结果的任务时，可以使用 RecursiveAction 任务。  
 将指派阶段和更新阶段的工作作为在 Fork/Join 框架中执行的任务来实现。
 
--	[AssignmentTask](AssignmentTask.java) 类：  
+-	[AssignmentTask](example1/AssignmentTask.java) 类：  
 将指派阶段作为在 Fork/Join 框架中执行的任务实现。 
 
--	[UpdateTask](UpdateTask.java) 类：  
+-	[UpdateTask](example1/UpdateTask.java) 类：  
 将更新阶段作为在 Fork/Join 框架中执行的任务实现。
--	[J2KMeansConcurrentMain](J2KMeansConcurrentMain.java) 类：  
+-	[J2KMeansConcurrentMain](example1/J2KMeansConcurrentMain.java) 类：  
 实现了算法的并发版本，测试算法的并发版本。
 
 ### 对比解决方案
+-	[J2Test_KMeans](example1/J2Test_KMeans.java) 类  
+
 ```
 Benchmark               (K)  (MAX_SIZE)  (SEED)  Mode  Cnt        Score   Error  Units
 J2KMeansConcurrentMain    5           1       1  avgt        399239.069          us/op

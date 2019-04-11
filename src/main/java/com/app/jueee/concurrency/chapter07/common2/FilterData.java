@@ -1,4 +1,4 @@
-package com.app.jueee.concurrency.chapter07.common;
+package com.app.jueee.concurrency.chapter07.common2;
 
 /**
  *  该类定义了一个数据筛选器。筛选器包括一个属性的编号和该属性的值。

@@ -1,11 +1,12 @@
-package com.app.jueee.concurrency.chapter07;
+package com.app.jueee.concurrency.chapter07.example2;
 
 import java.util.List;
 import java.util.concurrent.RecursiveTask;
 
-import com.app.jueee.concurrency.chapter07.common.CensusData;
-import com.app.jueee.concurrency.chapter07.common.Filter;
-import com.app.jueee.concurrency.chapter07.common.FilterData;
+import com.app.jueee.concurrency.chapter07.common2.CensusData;
+import com.app.jueee.concurrency.chapter07.common2.Filter;
+import com.app.jueee.concurrency.chapter07.common2.FilterData;
+import com.app.jueee.concurrency.chapter07.example2.TaskManager;
 
 public class IndividualTask extends RecursiveTask<CensusData>{
     // 含有所有 CensusData 对象的数组

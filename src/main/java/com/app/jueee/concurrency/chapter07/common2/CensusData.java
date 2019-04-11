@@ -1,4 +1,4 @@
-package com.app.jueee.concurrency.chapter07.common;
+package com.app.jueee.concurrency.chapter07.common2;
 
 /**
  *  该类存储了 39 个用于定义人员的属性。  

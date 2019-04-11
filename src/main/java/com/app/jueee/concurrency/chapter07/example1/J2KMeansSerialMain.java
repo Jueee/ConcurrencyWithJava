@@ -1,4 +1,4 @@
-package com.app.jueee.concurrency.chapter07;
+package com.app.jueee.concurrency.chapter07.example1;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -8,16 +8,15 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.Map;
 import java.util.Random;
-import java.util.concurrent.ForkJoinPool;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
-import com.app.jueee.concurrency.chapter07.common.Document;
-import com.app.jueee.concurrency.chapter07.common.DocumentCluster;
-import com.app.jueee.concurrency.chapter07.common.DocumentLoader;
-import com.app.jueee.concurrency.chapter07.common.VocabularyLoader;
+import com.app.jueee.concurrency.chapter07.common1.DistanceMeasurer;
+import com.app.jueee.concurrency.chapter07.common1.Document;
+import com.app.jueee.concurrency.chapter07.common1.DocumentCluster;
+import com.app.jueee.concurrency.chapter07.common1.DocumentLoader;
+import com.app.jueee.concurrency.chapter07.common1.VocabularyLoader;
 
-public class J2KMeansConcurrentMain {
+public class J2KMeansSerialMain {
 
     /**
      * 
@@ -27,25 +26,23 @@ public class J2KMeansConcurrentMain {
      * @param seed 用于随机数生成器的“种子”
      * @return
      */
-    public static DocumentCluster[] calculate(Document[] documents, int numberCluster, int vocSize, int seed, int maxSize) {
+    public static DocumentCluster[] calculate(Document[] documents, int clusterCount, int vocSize, int seed) {
         // 创建一个由 clusterCount 参数确定的簇的数组，并且使用 initialize() 方法和 Random 对象对其初始化
-        DocumentCluster[] clusters = new DocumentCluster[numberCluster];
+        DocumentCluster[] clusters = new DocumentCluster[clusterCount];
         Random random = new Random(seed);
-        for (int i = 0; i < numberCluster; i++) {
+        for (int i = 0; i < clusterCount; i++) {
             clusters[i] = new DocumentCluster(vocSize, new ArrayList<>());
             clusters[i].initialize(random);
         }
 
         // 重复指派和更新阶段，直到所有文档对应的簇都不再变化为止。
         boolean change = true;
-        ForkJoinPool pool = new ForkJoinPool();
         int numSteps = 0;
         while (change) {
-            change = assignment(clusters, documents, maxSize, pool);
-            update(clusters, maxSize, pool);
+            change = assignment(clusters, documents);
+            update(clusters);
             numSteps++;
         }
-        pool.shutdown();
         System.out.println("Number of steps: " + numSteps);
 
         // 返回描述了文档最终组织情况的簇数组
@@ -59,18 +56,30 @@ public class J2KMeansConcurrentMain {
      * @param documents
      * @return 该方法返回一个布尔值，该值表明从当前位置到下一位置是否有一个或多个文档改变了为其指派的簇。
      */
-    private static boolean assignment(DocumentCluster[] clusters, Document[] documents, int maxSize, ForkJoinPool pool) {
+    private static boolean assignment(DocumentCluster[] clusters, Document[] documents) {
         for (DocumentCluster cluster : clusters) {
             cluster.clearClusters();
         }
 
-        AtomicInteger numChanges = new AtomicInteger(0);
-        AssignmentTask task = new AssignmentTask(clusters, documents, 0, documents.length, numChanges, maxSize);
-        pool.execute(task);
-        task.join();
-            
+        int numChanges = 0;
+        for (Document document : documents) {
+            double distance = Double.MAX_VALUE;
+            DocumentCluster selectedCluster = null;
+            for (DocumentCluster cluster : clusters) {
+                double curDistance = DistanceMeasurer.euclideanDistance(document.getData(), cluster.getCentroid());
+                if (curDistance < distance) {
+                    distance = curDistance;
+                    selectedCluster = cluster;
+                }
+            }
+            selectedCluster.addDocument(document);
+            boolean result = document.setCluster(selectedCluster);
+            if (result) {
+                numChanges++;
+            }
+        }
         System.out.println("Number of Changes: " + numChanges);
-        return numChanges.get() > 0;
+        return numChanges > 0;
     }
 
     /**
@@ -78,10 +87,10 @@ public class J2KMeansConcurrentMain {
      * 
      * @param clusters 带有簇信息的 DocumentCluster 对象数组
      */
-    private static void update(DocumentCluster[] clusters, int maxSize, ForkJoinPool pool) {
-        UpdateTask task = new UpdateTask(clusters, 0, clusters.length, maxSize);
-        pool.execute(task);
-        task.join();
+    private static void update(DocumentCluster[] clusters) {
+        for (DocumentCluster cluster : clusters) {
+            cluster.calculateCentroid();
+        }
     }
 
     public static void main(String[] args) {
@@ -99,11 +108,9 @@ public class J2KMeansConcurrentMain {
             //
             int K = 10;
             int SEED = 100;
-            int MAX_SIZE = 10;
-            
             Date start, end;
             start = new Date();
-            DocumentCluster[] clusters = calculate(documents, K, vocIndex.size(), SEED, MAX_SIZE);
+            DocumentCluster[] clusters = calculate(documents, K, vocIndex.size(), SEED);
             end = new Date();
             System.out.println("K: " + K + "; SEED: " + SEED);
             System.out.println("Execution Time: " + (end.getTime() - start.getTime()));

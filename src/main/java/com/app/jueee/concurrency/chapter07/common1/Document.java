@@ -1,4 +1,4 @@
-package com.app.jueee.concurrency.chapter07.common;
+package com.app.jueee.concurrency.chapter07.common1;
 
 /**
  *  存放了有关文档的所有信息。

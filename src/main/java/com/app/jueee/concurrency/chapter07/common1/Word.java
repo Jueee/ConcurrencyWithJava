@@ -1,4 +1,4 @@
-package com.app.jueee.concurrency.chapter07.common;
+package com.app.jueee.concurrency.chapter07.common1;
 
 /**
  *  用于存放单词字符串和度量该单词的指标（ TF 、 DF 和 TF-IDF ）。

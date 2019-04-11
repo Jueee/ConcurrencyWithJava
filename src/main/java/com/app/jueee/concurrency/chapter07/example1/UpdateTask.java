@@ -1,8 +1,8 @@
-package com.app.jueee.concurrency.chapter07;
+package com.app.jueee.concurrency.chapter07.example1;
 
 import java.util.concurrent.RecursiveAction;
 
-import com.app.jueee.concurrency.chapter07.common.DocumentCluster;
+import com.app.jueee.concurrency.chapter07.common1.DocumentCluster;
 
 public class UpdateTask extends RecursiveAction{
 

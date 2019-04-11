@@ -1,4 +1,4 @@
-package com.app.jueee.concurrency.chapter07.common;
+package com.app.jueee.concurrency.chapter07.common1;
 
 import java.io.BufferedReader;
 import java.io.IOException;

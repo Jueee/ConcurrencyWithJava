@@ -1,4 +1,4 @@
-package com.app.jueee.concurrency.chapter07;
+package com.app.jueee.concurrency.chapter07.example2;
 
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;

@@ -1,4 +1,4 @@
-package com.app.jueee.concurrency.chapter07.common;
+package com.app.jueee.concurrency.chapter07.common1;
 
 /**
  *  用于计算两个向量之间的欧氏距离
