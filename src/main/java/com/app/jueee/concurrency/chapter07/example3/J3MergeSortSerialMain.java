@@ -10,6 +10,10 @@ import com.app.jueee.concurrency.chapter07.common3.AmazonMetaDataLoader;
 
 public class J3MergeSortSerialMain {
     
+    public static void mergeSort(Comparable[] data) {
+        mergeSort(data, 0, data.length);
+    }
+    
     /**
      *  如果该方法仅需要处理一个元素，则其立即返回。
      *  
