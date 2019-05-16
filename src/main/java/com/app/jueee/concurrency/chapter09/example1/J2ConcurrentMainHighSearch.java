@@ -9,29 +9,30 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class J2ConcurrentMainBasicSearch {
+import com.app.jueee.concurrency.chapter09.common1.Product;
+
+public class J2ConcurrentMainHighSearch {
 
     public static void main(String[] args) {
         String query = "Book";
-        Path file = Paths.get("data//chapter07","test-amazon.txt");
+        Path file = Paths.get("data//chapter07", "test-amazon.txt");
+
         try {
             Date start, end;
             start = new Date();
-            List<String> results = Files
-                    .walk(file, FileVisitOption.FOLLOW_LINKS)
+            List<Product> results = Files.walk(file, FileVisitOption.FOLLOW_LINKS)
                     .parallel()
                     .filter(f -> f.toString().endsWith(".txt"))
-                    .collect(ArrayList<String>::new,
-                            new ConcurrentStringAccumulator(query),
-                            List::addAll);
+                    .collect(ArrayList<Product>::new, new ConcurrentObjectAccumulator(query), List::addAll);
             end = new Date();
-            System.out.println("Resultados: "+results.size());
+            System.out.println("Results:"+results.size());
             System.out.println("*************");
-            results.forEach(System.out::println);
+            results.forEach(p -> System.out.println(p.getTitle()));
             System.out.println("*************");
-            System.out.println("Execution Time: "+(end.getTime()-start.getTime()));
+            System.out.println("Execution Time: " + (end.getTime() - start.getTime()));
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 }

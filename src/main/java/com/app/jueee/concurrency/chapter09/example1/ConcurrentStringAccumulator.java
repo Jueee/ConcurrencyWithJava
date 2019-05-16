@@ -20,9 +20,9 @@ public class ConcurrentStringAccumulator implements BiConsumer<List<String>, Pat
 			counter = Files
 					.lines(path)
 					.filter(l -> l.indexOf(":")!=-1)
-					.map(l -> l.split(":")[1].toLowerCase())
-					.filter(l -> l.contains(word.toLowerCase()))
-					.count();
+					.map(l -> l.split(":")[1].toLowerCase())       // 使用 map() 方法获取每个属性的取值
+					.filter(l -> l.contains(word.toLowerCase()))   // 使用 filter() 方法仅选取那些含有待搜索单词的行
+					.count();      // 使用 count() 方法计算流中剩下的元素数
 			System.out.println(counter);
 			if (counter>0) {
 				list.add(path.toString());
