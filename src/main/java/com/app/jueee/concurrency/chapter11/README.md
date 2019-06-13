@@ -19,7 +19,7 @@ Java 并发 API 包含一些用于并发应用程序的数据结构，而它们�
 1.4	[原子变量](C14.原子变量.md)  
 1.5	[变量句柄](C15.变量句柄.md)  
 2.	[同步机制](C20同步机制.md)  
-2.1	[CommonTask 类](C21.CommonTask类.md)  
+2.1	[CommonTask 类](CommonTask.java)  
 2.2	[Lock 接口](C22.Lock接口.md)  
 2.3	[Semaphore 类](C23.Semaphore类.md)  
 2.4	[CountDownLatch 类](C24.CountDownLatch类.md)  
