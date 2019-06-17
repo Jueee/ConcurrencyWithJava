@@ -13,10 +13,16 @@ import java.util.List;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.apache.commons.lang.StringUtils;
 
 public class ProductLoader {
+    
+    public static List<Product> loadList(Path path){
+        return Stream.of(load(path)).collect(Collectors.toList());
+    }
 
     public static Product[] load(Path path) {
         List<Product> list = new ArrayList<Product>();
