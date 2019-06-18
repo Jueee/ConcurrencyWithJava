@@ -5,7 +5,7 @@ Mastering Concurrency Programming with Java 9，Javier Fernandez Gonzalez 著。
 [GitHub 地址](https://github.com/PacktPublishing/Mastering-Concurrency-Programming-with-Java-9-Second-Edition)
 
 
-### [第一步：并发设计原理](src/main/java/com/app/jueee/concurrency/chapter01/README.md)
+### [第一步：并发设计原理](src/main/java/com/app/jueee/concurrency/chapter01)
 1.	[基本的并发概念](src/main/java/com/app/jueee/concurrency/chapter01/C1基本的并发概念.md)
 2.	[并发应用程序中可能出现的问题](src/main/java/com/app/jueee/concurrency/chapter01/C2并发应用程序中可能出现的问题.md)
 3.	[设计并发算法的方法论](src/main/java/com/app/jueee/concurrency/chapter01/C3设计并发算法的方法论.md)
