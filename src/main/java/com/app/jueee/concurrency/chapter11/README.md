@@ -20,11 +20,11 @@ Java 并发 API 包含一些用于并发应用程序的数据结构，而它们�
 1.5	[变量句柄](C15.变量句柄.md)  
 2.	[同步机制](C20同步机制.md)  
 2.1	[CommonTask 类](CommonTask.java)  
-2.2	[Lock 接口](C22.Lock接口.md)  
-2.3	[Semaphore 类](C23.Semaphore类.md)  
-2.4	[CountDownLatch 类](C24.CountDownLatch类.md)  
-2.5	[CyclicBarrier 类](C25.CyclicBarrier类.md)  
-2.6	[CompletableFuture 类](C26.CompletableFuture类.md)  
+2.2	[Lock 接口](J22Lock.java)  
+2.3	[Semaphore 类](J23Semaphore.java)  
+2.4	[CountDownLatch 类](J24CountDownLatch.java)  
+2.5	[CyclicBarrier 类](J25CyclicBarrier.java)  
+2.6	[CompletableFuture 类](J26CompletableFuture.java)  
 
 ### 小结
 -	介绍了并发数据结构  
