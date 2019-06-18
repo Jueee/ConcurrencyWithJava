@@ -18,14 +18,14 @@ Java 是最受欢迎的编程语言，但并不是实现 Java 虚拟机（JVM）
 1.4	Delay  
 1.5	Future  
 1.6	Promise  
-2.	[Groovy 及其 GPars 库的并发处理](C2Groovy 及其 GPars 库的并发处理.md)  
+2.	[Groovy 及其 GPars 库的并发处理](C2Groovy及其GPars库的并发处理.md)  
 2.1	使用 Java 元素  
 2.2	数据并行处理  
 2.3	Fork/Join 处理  
 2.4	Actor  
 2.5	Agent  
 2.6	Dataflow  
-3.	[Scala 的并发处理](C3Scala 的并发处理.md)  
+3.	[Scala 的并发处理](C3Scala的并发处理.md)  
 3.1	Scala 中的 Future 对象  
 3.2	Promise  
 
